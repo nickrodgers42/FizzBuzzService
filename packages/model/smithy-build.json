@@ -1,0 +1,28 @@
+{
+    "version": "1.0",
+    "projections": {
+        "client": {
+            "plugins": {
+                "typescript-codegen": {
+                    "package": "@fizzbuzz-service/client",
+                    "packageVersion": "0.0.1"
+                }
+            }
+        },
+        "server": {
+            "plugins": {
+                "typescript-ssdk-codegen": {
+                    "package": "@fizzbuzz-service/server",
+                    "packageVersion": "0.0.1",
+                    "disableDefaultValidation": true
+                }
+            }
+        }
+    },
+    "plugins": {
+        "openapi": {
+            "service": "example.fizzBuzz#FizzBuzz",
+            "protocol": "aws.protocols#restJson1"
+        }
+    }
+}
