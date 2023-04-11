@@ -1,23 +1,25 @@
 {
-  "name": "FizzBuzzService",
-  "packageManager": "yarn@3.5.0",
-  "private": true,
-  "workspaces": [
-    "packages/*",
-    "packages/model/build/projections/server/typescript-ssdk-codegen/",
-    "packages/model/build/projections/client/typescript-codegen/"
-  ],
-  "scripts": {
-    "build": "yarn build:model && yarn build:server-pkg && yarn build:client-pkg && yarn build:server && yarn build:client",
-    "build:model": "yarn workspace model build",
-    "build:server-pkg": "yarn workspace @fizzbuzz-service/server build",
-    "build:server": "yarn workspace server build",
-    "build:client-pkg": "yarn workspace @fizzbuzz-service/client build",
-    "build:client": "yarn workspace client build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {
-    "@yarnpkg/sdks": "^3.0.0-rc.42",
-    "typescript": "^5.0.4"
-  }
+    "name": "FizzBuzzService",
+    "packageManager": "yarn@3.5.0",
+    "private": true,
+    "workspaces": [
+        "packages/*",
+        "packages/model/build/projections/server/typescript-ssdk-codegen/",
+        "packages/model/build/projections/client/typescript-codegen/"
+    ],
+    "scripts": {
+        "build": "yarn build:model && yarn build:server-pkg && yarn build:client-pkg && yarn build:server && yarn build:client",
+        "build:model": "yarn workspace model build",
+        "build:server-pkg": "yarn workspace @fizzbuzz-service/server build",
+        "build:server": "yarn workspace server build",
+        "build:client-pkg": "yarn workspace @fizzbuzz-service/client build",
+        "build:client": "yarn workspace client build",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "yarn prettier --write ."
+    },
+    "devDependencies": {
+        "@yarnpkg/sdks": "^3.0.0-rc.42",
+        "prettier": "^2.8.7",
+        "typescript": "^5.0.4"
+    }
 }

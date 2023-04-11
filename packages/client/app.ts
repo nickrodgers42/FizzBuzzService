@@ -1,3 +1,1 @@
-import {
-    FizzBuzzClient
-} from '@fizzbuzz-service/client'
+import { FizzBuzzClient } from "@fizzbuzz-service/client"

@@ -1,11 +1,11 @@
 {
-  "name": "client",
-  "version": "0.0.1",
-  "packageManager": "yarn@3.5.0",
-  "scripts": {
-    "build": "echo \"build client\""
-  },
-  "dependencies": {
-    "@fizzbuzz-service/client": "0.0.1"
-  }
+    "name": "client",
+    "version": "0.0.1",
+    "packageManager": "yarn@3.5.0",
+    "scripts": {
+        "build": "echo \"build client\""
+    },
+    "dependencies": {
+        "@fizzbuzz-service/client": "0.0.1"
+    }
 }
