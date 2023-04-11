@@ -292,7 +292,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/protocol-http@npm:^3.127.0":
+"@aws-sdk/protocol-http@npm:^3.127.0, @aws-sdk/protocol-http@npm:^3.267.0, @aws-sdk/protocol-http@npm:^3.310.0":
   version: 3.310.0
   resolution: "@aws-sdk/protocol-http@npm:3.310.0"
   dependencies:
@@ -380,7 +380,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/types@npm:3.310.0, @aws-sdk/types@npm:^3.1.0, @aws-sdk/types@npm:^3.110.0, @aws-sdk/types@npm:^3.127.0":
+"@aws-sdk/types@npm:3.310.0, @aws-sdk/types@npm:^3.1.0, @aws-sdk/types@npm:^3.110.0, @aws-sdk/types@npm:^3.127.0, @aws-sdk/types@npm:^3.267.0":
   version: 3.310.0
   resolution: "@aws-sdk/types@npm:3.310.0"
   dependencies:
@@ -582,6 +582,18 @@ __metadata:
     re2-wasm: ^1.0.2
     tslib: ^1.8.0
   checksum: 15066cc38d4dce6d00ae1595c57208f648eeba208b31dcd7c91645aea5be404763f27c17d25628a328b6d45a819817491193cd3ebd62d06b5d45a7a526397d22
+  languageName: node
+  linkType: hard
+
+"@aws-smithy/server-common@npm:^1.0.0-alpha.9":
+  version: 1.0.0-alpha.9
+  resolution: "@aws-smithy/server-common@npm:1.0.0-alpha.9"
+  dependencies:
+    "@aws-sdk/protocol-http": ^3.267.0
+    "@aws-sdk/types": ^3.267.0
+    re2-wasm: ^1.0.2
+    tslib: ^1.8.0
+  checksum: ef7adeb607703d0d6aefefb1ec418a716a3f2bc49f78e6f05c187a0720c018122cd575ea8c06e7a9eb35003746b63abb1ff83401806d8d063a07280fa266072f
   languageName: node
   linkType: hard
 
@@ -2540,6 +2552,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "server@workspace:packages/server"
   dependencies:
+    "@aws-sdk/protocol-http": ^3.310.0
+    "@aws-smithy/server-common": ^1.0.0-alpha.9
     "@fizzbuzz-service/server": "workspace:^"
     "@types/express": ^4.17.17
     "@types/node": ^18.15.11

@@ -2,6 +2,7 @@ $version: "2"
 namespace example.fizzBuzz
 
 use aws.protocols#restJson1
+use smithy.framework#ValidationException
 
 @restJson1
 service FizzBuzz {
@@ -14,6 +15,7 @@ service FizzBuzz {
 operation Ping {
     input: PingInput
     output: PingOutput
+    errors: [ValidationException]
 }
 
 @input
