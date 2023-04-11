@@ -14,7 +14,9 @@
         "build:server": "yarn workspace server build",
         "build:client-pkg": "yarn workspace @fizzbuzz-service/client build",
         "build:client": "yarn workspace client build",
+        "run:server": "yarn workspace server ts-node src/index.ts",
         "test": "echo \"Error: no test specified\" && exit 1",
+        "lsp": "yarn sdks base",
         "lint": "yarn prettier --write ."
     },
     "devDependencies": {

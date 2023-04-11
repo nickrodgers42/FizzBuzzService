@@ -1,27 +1,12 @@
 import express, { Express, Request, Response } from "express"
 import {
-    PingServerInput,
-    PingServerOutput,
     getFizzBuzzServiceHandler,
 } from "@fizzbuzz-service/server"
 import { HttpRequest, HttpResponse } from "@aws-sdk/protocol-http"
-import { Operation } from "@aws-smithy/server-common"
+import { pingOperation } from "./operations/ping"
 
 const app: Express = express()
 const port = 8080
-
-interface PingContext {}
-
-const pingOperation: Operation<
-    PingServerInput,
-    PingServerOutput,
-    PingContext
-> = async (input: any, context: any) => {
-    console.log(`Received Ping Operation from ${context}, ${input}`)
-    return {
-        message: "pong",
-    }
-}
 
 const fizzBuzzServiceHandler = getFizzBuzzServiceHandler({
     Ping: pingOperation,
@@ -32,10 +17,24 @@ app.get("/*", async (req: Request, res: Response) => {
     console.log(req.headers ?? "this request has no headers")
     console.log(req.body ?? "this request has no body")
 
+    const headers: Record<string, string> = {}
+    for (const header in req.headers) {
+        if (req.headers[header] === undefined) {
+            continue
+        }
+        if (Array.isArray(req.headers[header])) {
+            headers[header] = req.headers[header]!.toString()
+        }
+        else {
+            headers[header] = String(req.headers[header])
+        }
+    }
+
     const httpRequest = new HttpRequest({
         method: "GET",
         path: req.path,
         port,
+        headers,
         body: req.body,
     })
     const httpResponse: HttpResponse = await fizzBuzzServiceHandler.handle(
