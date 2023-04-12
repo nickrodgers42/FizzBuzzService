@@ -42,7 +42,10 @@ app.get("/*", async (req: Request, res: Response) => {
         {}
     )
     console.log(httpResponse)
-    res.send(httpResponse)
+    for (const key in httpResponse.headers) {
+        res.set(key, httpResponse.headers[key])
+    }
+    res.send(httpResponse.body)
 })
 
 app.listen(port, () => {

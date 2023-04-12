@@ -1267,6 +1267,8 @@ __metadata:
   resolution: "client@workspace:packages/client"
   dependencies:
     "@fizzbuzz-service/client": 0.0.1
+    "@types/node": ^18.15.11
+    ts-node: ^10.9.1
   languageName: unknown
   linkType: soft
 

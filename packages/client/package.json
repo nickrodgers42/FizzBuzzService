@@ -3,9 +3,12 @@
     "version": "0.0.1",
     "packageManager": "yarn@3.5.0",
     "scripts": {
-        "build": "echo \"build client\""
+        "build": "echo \"build client\"",
+        "main": "yarn ts-node src/app.ts"
     },
-    "dependencies": {
-        "@fizzbuzz-service/client": "0.0.1"
+    "devDependencies": {
+        "@fizzbuzz-service/client": "0.0.1",
+        "@types/node": "^18.15.11",
+        "ts-node": "^10.9.1"
     }
 }
