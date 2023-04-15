@@ -4,12 +4,14 @@ import {
 } from "@fizzbuzz-service/server"
 import { HttpRequest, HttpResponse } from "@aws-sdk/protocol-http"
 import { pingOperation } from "./operations/ping"
+import { getFizzBuzzOperation } from "./operations/getFizzBuzz"
 
 const app: Express = express()
 const port = 8080
 
 const fizzBuzzServiceHandler = getFizzBuzzServiceHandler({
     Ping: pingOperation,
+    GetFizzBuzz: getFizzBuzzOperation
 })
 
 app.get("/*", async (req: Request, res: Response) => {
