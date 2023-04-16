@@ -1,5 +1,8 @@
 import { Operation } from "@aws-smithy/server-common"
-import { GetFizzBuzzServerInput, GetFizzBuzzServerOutput } from "../../../model/build/projections/server/typescript-ssdk-codegen/dist-types"
+import {
+    GetFizzBuzzServerInput,
+    GetFizzBuzzServerOutput,
+} from "@fizzbuzz-service/server"
 
 export interface GetFizzBuzzContext {}
 
@@ -24,6 +27,6 @@ export const getFizzBuzzOperation: Operation<
     }
 
     return {
-       fizzBuzzString: fizzBuzzString,
+        fizzBuzzString: fizzBuzzString,
     }
 }

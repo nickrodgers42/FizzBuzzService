@@ -9,6 +9,7 @@
     "devDependencies": {
         "@fizzbuzz-service/client": "0.0.1",
         "@types/node": "^18.15.11",
+        "commander": "^10.0.1",
         "ts-node": "^10.9.1"
     }
 }
