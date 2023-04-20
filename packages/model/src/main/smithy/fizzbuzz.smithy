@@ -10,6 +10,7 @@ service FizzBuzz {
     version: "2023-03-04"
     operations: [
         GetFizzBuzz,
+        AddUser,
         Ping
     ]
 }
@@ -46,3 +47,23 @@ structure GetFizzBuzzInput {}
 structure GetFizzBuzzOutput {
     fizzBuzzString: String
 }
+
+@http(method: "POST", "uri": "/addUser", code: 201)
+operation  AddUser {
+    input: AddUserInput,
+    output: AddUserOutput,
+    errors: [ ValidationException ]
+}
+
+@input
+structure AddUserInput {
+    @required
+    name: String
+}
+
+@output
+structure AddUserOutput {
+    @required
+    response: String
+}
+

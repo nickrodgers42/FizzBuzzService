@@ -8,8 +8,8 @@ buildscript {
     }
     dependencies {
         classpath("software.amazon.smithy.typescript:smithy-aws-typescript-codegen:0.12.0")
-        classpath("software.amazon.smithy:smithy-openapi:1.28.0")
-        classpath("software.amazon.smithy:smithy-aws-traits:1.28.0")
+        classpath("software.amazon.smithy:smithy-openapi:1.30.0")
+        classpath("software.amazon.smithy:smithy-aws-traits:1.30.0")
     }
 }
 
@@ -19,9 +19,9 @@ repositories {
 }
 
 dependencies {
-    implementation("software.amazon.smithy:smithy-model:1.28.0")
-    implementation("software.amazon.smithy:smithy-aws-traits:1.28.0")
-    implementation("software.amazon.smithy:smithy-validation-model:1.28.0")
+    implementation("software.amazon.smithy:smithy-model:1.30.0")
+    implementation("software.amazon.smithy:smithy-aws-traits:1.30.0")
+    implementation("software.amazon.smithy:smithy-validation-model:1.30.0")
 }
 
 configure<software.amazon.smithy.gradle.SmithyExtension> {

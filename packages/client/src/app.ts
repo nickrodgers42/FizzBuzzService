@@ -1,4 +1,6 @@
 import {
+    AddUserCommand,
+    AddUserOutput,
     FizzBuzzClient,
     GetFizzBuzzCommand,
     GetFizzBuzzOutput,
@@ -45,6 +47,26 @@ program
             })
     })
 
+program
+    .command("addUser")
+    .description("Add a user to the server")
+    .option("-n, --name <name>", "Name of the user")
+    .action((options, _) => {
+        console.log(`Attempting to add user ${options.name}`)
+        client
+            .send(
+                new AddUserCommand({
+                    name: options.name,
+                })
+            )
+            .catch((err: any) => {
+                console.log(err)
+                process.exit(1)
+            })
+            .then((res: AddUserOutput) => {
+                console.log(res.response)
+            })
+    })
 const main = () => {
     program.parse()
 }

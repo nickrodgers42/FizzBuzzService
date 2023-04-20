@@ -2,3 +2,4 @@
 **/.gradle/
 .yarn/
 .pnp.*
+**/.smithy.lsp.log
