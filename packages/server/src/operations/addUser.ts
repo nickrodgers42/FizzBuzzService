@@ -7,9 +7,10 @@ export const addUserOperation: Operation<
     AddUserInput,
     AddUserOutput,
     AddUserContext
-> = async (input: any, __: any) => {
+> = async (input: AddUserInput, __: any) => {
     console.log("AddUser operation called")
+
     return {
-        response: `User ${input.name} added`,
+        response: `User ${input.userName} added`,
     }
 }

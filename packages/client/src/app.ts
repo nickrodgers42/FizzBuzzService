@@ -1,6 +1,8 @@
 import {
     AddUserCommand,
     AddUserOutput,
+    DeleteUserCommand,
+    DeleteUserOutput,
     FizzBuzzClient,
     GetFizzBuzzCommand,
     GetFizzBuzzOutput,
@@ -9,7 +11,8 @@ import {
 import { Command } from "commander"
 
 const endpoint = "http://localhost:8080"
-const client = new FizzBuzzClient({ endpoint })
+const region = "fake-region"
+const client = new FizzBuzzClient({ endpoint, region })
 const program = new Command()
 
 program
@@ -56,7 +59,7 @@ program
         client
             .send(
                 new AddUserCommand({
-                    name: options.name,
+                    userName: options.name,
                 })
             )
             .catch((err: any) => {
@@ -67,6 +70,28 @@ program
                 console.log(res.response)
             })
     })
+
+program
+    .command("deleteUser")
+    .description("Delete a user from the server")
+    .option("-n, --name <name>", "Name of the user")
+    .action((options, _) => {
+        console.log(`Attempting to delete user ${options.name}`)
+        client
+            .send(
+                new DeleteUserCommand({
+                    userName: options.name,
+                })
+            )
+            .catch((err: any) => {
+                console.log(err)
+                process.exit(1)
+            })
+            .then((res: DeleteUserOutput) => {
+                console.log(res)
+            })
+    })
+
 const main = () => {
     program.parse()
 }

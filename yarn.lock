@@ -3257,6 +3257,7 @@ __metadata:
     express: ^4.18.2
     nodemon: ^2.0.22
     ts-node: ^10.9.1
+    ts-postgres: ^1.3.0
     typescript: ^5.0.3
   languageName: unknown
   linkType: soft
@@ -3565,6 +3566,22 @@ __metadata:
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
   checksum: 090adff1302ab20bd3486e6b4799e90f97726ed39e02b39e566f8ab674fd5bd5f727f43615debbfc580d33c6d9d1c6b1b3ce7d8e3cca3e20530a145ffa232c35
+  languageName: node
+  linkType: hard
+
+"ts-postgres@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "ts-postgres@npm:1.3.0"
+  dependencies:
+    ts-typed-events: ^3.0.0
+  checksum: 943674664c828501224dde292361a5935ec444b030c5e2dedcce517841c31efb7d25edcda2482de5e410cf1170c1e391cd0b45cd90cbacfc350643535b64a8f3
+  languageName: node
+  linkType: hard
+
+"ts-typed-events@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "ts-typed-events@npm:3.0.0"
+  checksum: f24f8f58c4527e736405537d4b25e047e1cc996ed54b04a35f43575758e9a7af4d2177222f906184ce6051a591afb3c6915045c56c82b97158c01c6eda29feee
   languageName: node
   linkType: hard
 

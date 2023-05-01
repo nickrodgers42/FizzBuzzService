@@ -1,12 +1,15 @@
 $version: "2"
+
 namespace example.fizzBuzz
+
+use smithy.framework#ValidationException
 
 resource User {
     identifiers: {
-        userName: String,
+        userName: String
     }
     read: GetUser
-    create: AddUser
+    put: AddUser
     delete: DeleteUser
 }
 
@@ -15,6 +18,7 @@ resource User {
 operation GetUser {
     input: GetUserInput
     output: GetUserOutput
+    errors: [ValidationException]
 }
 
 @input
@@ -25,7 +29,27 @@ structure GetUserInput {
 }
 
 @output
-structure GetUserOutput {
+structure GetUserOutput {}
+
+@idempotent
+@http(method: "PUT", "uri": "/user/addUser/{userName}", code: 201)
+operation AddUser {
+    input: AddUserInput
+    output: AddUserOutput
+    errors: [ValidationException]
+}
+
+@input
+structure AddUserInput {
+    @required
+    @httpLabel
+    userName: String
+}
+
+@output
+structure AddUserOutput {
+    @required
+    response: String
 }
 
 @idempotent
@@ -33,6 +57,7 @@ structure GetUserOutput {
 operation DeleteUser {
     input: DeleteUserInput
     output: DeleteUserOutput
+    errors: [ValidationException]
 }
 
 @input
@@ -43,5 +68,4 @@ structure DeleteUserInput {
 }
 
 @output
-structure DeleteUserOutput {
-}
+structure DeleteUserOutput {}
