@@ -8,7 +8,9 @@ import { addUserOperation } from "./operations/addUser"
 import bodyParser from "body-parser"
 import { getUserOperation } from "./operations/getUser"
 import { deleteUserOperation } from "./operations/deleteUser"
+import * as dotenv from "dotenv"
 
+dotenv.config()
 const app: Express = express()
 const PORT = 8080
 

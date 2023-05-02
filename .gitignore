@@ -3,3 +3,4 @@
 .yarn/
 .pnp.*
 **/.smithy.lsp.log
+**/.env
