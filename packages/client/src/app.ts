@@ -6,6 +6,8 @@ import {
     FizzBuzzClient,
     GetFizzBuzzCommand,
     GetFizzBuzzOutput,
+    GetUserCommand,
+    GetUserOutput,
     PingCommand,
 } from "@fizzbuzz-service/client"
 import { Command } from "commander"
@@ -88,9 +90,31 @@ program
                 process.exit(1)
             })
             .then((res: DeleteUserOutput) => {
-                console.log(res)
+                console.log(res.response)
             })
     })
+
+program
+    .command("getUser")
+    .description("Get a user from the server")
+    .option("-n, --name <name>", "Name of the user")
+    .action((options, _) => {
+        console.log(`Attempting to get user ${options.name}`)
+        client
+            .send(
+                new GetUserCommand({
+                    userName: options.name,
+                })
+            )
+            .catch((err: any) => {
+                console.log(err)
+                process.exit(1)
+            })
+            .then((res: GetUserOutput) => {
+                console.log(res.response)
+            })
+    })
+
 
 const main = () => {
     program.parse()

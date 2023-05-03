@@ -29,7 +29,10 @@ structure GetUserInput {
 }
 
 @output
-structure GetUserOutput {}
+structure GetUserOutput {
+    @required
+    response: String
+}
 
 @idempotent
 @http(method: "PUT", "uri": "/user/addUser/{userName}", code: 201)
@@ -68,4 +71,7 @@ structure DeleteUserInput {
 }
 
 @output
-structure DeleteUserOutput {}
+structure DeleteUserOutput {
+    @required
+    response: String
+}
