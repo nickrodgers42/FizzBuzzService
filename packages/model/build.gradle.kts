@@ -22,6 +22,7 @@ dependencies {
     implementation("software.amazon.smithy:smithy-model:1.30.0")
     implementation("software.amazon.smithy:smithy-aws-traits:1.30.0")
     implementation("software.amazon.smithy:smithy-validation-model:1.30.0")
+    implementation("software.amazon.smithy:smithy-linters:1.30.0")
 }
 
 configure<software.amazon.smithy.gradle.SmithyExtension> {

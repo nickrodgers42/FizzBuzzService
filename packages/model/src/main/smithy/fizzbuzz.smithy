@@ -1,9 +1,24 @@
 $version: "2"
+
+metadata validators = [
+    { name: "AbbreviationName" },
+    { name: "CamelCase" }
+    { name: "MissingSensitiveTrait" },
+    { name: "NoninclusiveTerms" },
+    { name: "ReservedWords" },
+    { name: "RepeatedShapeName" },
+    { name: "InputOutputStructureReuse" },
+    { name: "MissingPaginatedTrait" },
+    { name: "ShouldHaveUsedTimestamp" },
+    { name: "MissingClientOptionalTrait" },
+]
+
 namespace example.fizzBuzz
 
 use aws.protocols#restJson1
 use smithy.framework#ValidationException
 use aws.api#service
+
 
 @service(sdkId: "FizzBuzz")
 @restJson1
