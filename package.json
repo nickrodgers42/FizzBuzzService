@@ -8,14 +8,16 @@
         "packages/model/build/projections/client/typescript-codegen/"
     ],
     "scripts": {
-        "build": "yarn build:model && yarn build:server-pkg && yarn build:client-pkg && yarn build:server && yarn build:client && yarn install",
+        "build": "yarn build:model && yarn build:server-pkg && yarn build:client-pkg && yarn build:server && yarn build:client && yarn build:db && yarn install",
         "build:model": "yarn workspace model build",
         "build:server-pkg": "yarn workspace @fizzbuzz-service/server build",
-        "build:server": "yarn workspace server build",
         "build:client-pkg": "yarn workspace @fizzbuzz-service/client build",
+        "build:server": "yarn workspace server build",
         "build:client": "yarn workspace client build",
-        "run:server": "yarn workspace server nodemon src/index.ts",
-        "run:client": "yarn workspace client ts-node src/app.ts",
+        "build:db": "cd ./packages/database && yarn build",
+        "run:server": "yarn workspace server start",
+        "run:client": "yarn workspace client start",
+        "run:db": "yarn workspace database start",
         "test": "echo \"Error: no test specified\" && exit 1",
         "lsp": "yarn sdks base",
         "lint": "yarn prettier --write ."

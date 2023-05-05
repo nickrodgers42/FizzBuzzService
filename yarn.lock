@@ -1640,6 +1640,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"database@workspace:packages/database":
+  version: 0.0.0-use.local
+  resolution: "database@workspace:packages/database"
+  languageName: unknown
+  linkType: soft
+
 "date-fns@npm:^2.16.1":
   version: 2.29.3
   resolution: "date-fns@npm:2.29.3"

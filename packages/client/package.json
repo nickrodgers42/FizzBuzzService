@@ -4,7 +4,7 @@
     "packageManager": "yarn@3.5.0",
     "scripts": {
         "build": "echo \"build client\"",
-        "main": "yarn ts-node src/app.ts"
+        "start": "yarn ts-node src/app.ts"
     },
     "devDependencies": {
         "@fizzbuzz-service/client": "0.0.1",

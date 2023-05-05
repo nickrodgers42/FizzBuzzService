@@ -12,7 +12,7 @@ export const deleteUserOperation: Operation<
     console.log("DeleteUser operation called")
     const client = new Client({
         host: "localhost",
-        port: 5432,
+        port: 8090,
         user: process.env.PG_USERNAME,
         password: process.env.PG_PASSWORD,
         database: "fizzbuzz",

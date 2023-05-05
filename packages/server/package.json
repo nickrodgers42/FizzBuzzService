@@ -4,7 +4,7 @@
     "packageManager": "yarn@3.5.0",
     "scripts": {
         "build": "echo \"build server\"",
-        "serve": "yarn ts-node src/index.ts"
+        "start": "yarn nodemon src/index.ts"
     },
     "devDependencies": {
         "@aws-sdk/protocol-http": "^3.310.0",
