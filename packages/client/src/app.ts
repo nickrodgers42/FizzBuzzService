@@ -8,6 +8,8 @@ import {
     GetFizzBuzzOutput,
     GetUserCommand,
     GetUserOutput,
+    ListUsersCommand,
+    ListUsersOutput,
     PingCommand,
 } from "@fizzbuzz-service/client"
 import { Command } from "commander"
@@ -115,6 +117,23 @@ program
             })
     })
 
+program
+    .command("listUsers")
+    .description("listUsers")
+    .action((options, _) => {
+        console.log(`Attempting to list users`)
+        client
+            .send(
+                new ListUsersCommand({})
+            )
+            .catch((err: any) => {
+                console.log(err)
+                process.exit(1)
+            })
+            .then((res: ListUsersOutput) => {
+                console.log(res.response)
+            })
+    })
 
 const main = () => {
     program.parse()

@@ -9,6 +9,7 @@ import bodyParser from "body-parser"
 import { getUserOperation } from "./operations/getUser"
 import { deleteUserOperation } from "./operations/deleteUser"
 import * as dotenv from "dotenv"
+import { listUsersOperation } from "./operations/listUsers"
 
 dotenv.config()
 const app: Express = express()
@@ -20,18 +21,22 @@ const fizzBuzzServiceHandler = getFizzBuzzServiceHandler({
     AddUser: addUserOperation,
     GetUser: getUserOperation,
     DeleteUser: deleteUserOperation,
+    ListUsers: listUsersOperation,
 })
 
 app.use(bodyParser.raw({ type: "*/*" }))
+app.set("query parser", "simple")
 app.all("/*", async (req: Request, res: Response) => {
     console.log("Recieved request")
-    console.log(req.path)
+    console.log("Path:", req.path)
+    console.log("Method:", req.method)
     console.log("headers", req.headers ?? "this request has no headers")
     console.log(
         "body",
         req.body ? req.body.toString() : "this request has no body"
     )
-    console.log(req.body.properties)
+    console.log("query", req.query)
+    console.log(req.body)
     const httpRequest = new HttpRequest({
         method: req.method,
         path: req.path,

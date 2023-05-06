@@ -11,10 +11,11 @@ resource User {
     read: GetUser
     put: AddUser
     delete: DeleteUser
+    list: ListUsers
 }
 
 @readonly
-@http(method: "GET", "uri": "/user/{userName}", code: 200)
+@http(method: "GET", "uri": "/users/get/{userName}", code: 200)
 operation GetUser {
     input: GetUserInput
     output: GetUserOutput
@@ -35,7 +36,7 @@ structure GetUserOutput {
 }
 
 @idempotent
-@http(method: "PUT", "uri": "/user/addUser/{userName}", code: 201)
+@http(method: "PUT", "uri": "/users/add/{userName}", code: 201)
 operation AddUser {
     input: AddUserInput
     output: AddUserOutput
@@ -56,7 +57,7 @@ structure AddUserOutput {
 }
 
 @idempotent
-@http(method: "DELETE", "uri": "/user/{userName}", code: 200)
+@http(method: "DELETE", "uri": "/users/delete/{userName}", code: 200)
 operation DeleteUser {
     input: DeleteUserInput
     output: DeleteUserOutput
@@ -65,8 +66,8 @@ operation DeleteUser {
 
 @input
 structure DeleteUserInput {
-    @required
     @httpLabel
+    @required
     userName: String
 }
 
@@ -75,3 +76,36 @@ structure DeleteUserOutput {
     @required
     response: String
 }
+
+@readonly
+@paginated(
+    inputToken: "nextToken"
+    outputToken: "nextToken"
+    pageSize: "pageSize"
+)
+@http(method: "GET", "uri": "/users/list", code: 200)
+operation ListUsers {
+    input: ListUsersInput
+    output: ListUsersOutput
+    errors: [ValidationException]
+}
+
+@input
+structure ListUsersInput {
+    @httpQuery("token")
+    nextToken: String
+    @httpQuery("count")
+    pageSize: Integer
+}
+
+@output
+structure ListUsersOutput {
+    nextToken: String
+    @required
+    response: UserList
+}
+
+list UserList {
+    member: String
+}
+
