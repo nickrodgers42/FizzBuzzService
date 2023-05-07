@@ -57,7 +57,7 @@ structure AddUserOutput {
 }
 
 @idempotent
-@http(method: "DELETE", "uri": "/users/delete/{userName}", code: 200)
+@http(method: "DELETE", "uri": "/users/delete", code: 200)
 operation DeleteUser {
     input: DeleteUserInput
     output: DeleteUserOutput
@@ -66,8 +66,8 @@ operation DeleteUser {
 
 @input
 structure DeleteUserInput {
-    @httpLabel
     @required
+    @httpQuery("username")
     userName: String
 }
 

@@ -1,4 +1,3 @@
-import { Response } from "express"
 import { IncomingHttpHeaders } from "http"
 
 export const convertHeaders = (
@@ -18,11 +17,13 @@ export const convertHeaders = (
     return convertedHeaders
 }
 
-export const setHeaders = (
-    headers: Record<string, string>,
-    response: Response
-) => {
-    for (const key in headers) {
-        response.set(key, headers[key])
+export const convertQueryParams = (
+    urLSearchParams: URLSearchParams
+): Record<string, string | Array<String> | null> => {
+    const convertedQueryParams: Record<string, string | Array<String> | null> =
+        {}
+    for (const [key, value] of urLSearchParams.entries()) {
+        convertedQueryParams[key] = value
     }
+    return convertedQueryParams
 }

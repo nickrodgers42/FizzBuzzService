@@ -123,9 +123,7 @@ program
     .action((options, _) => {
         console.log(`Attempting to list users`)
         client
-            .send(
-                new ListUsersCommand({})
-            )
+            .send(new ListUsersCommand({}))
             .catch((err: any) => {
                 console.log(err)
                 process.exit(1)

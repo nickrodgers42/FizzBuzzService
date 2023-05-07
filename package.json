@@ -8,12 +8,10 @@
         "packages/model/build/projections/client/typescript-codegen/"
     ],
     "scripts": {
-        "build": "yarn build:model && yarn build:server-pkg && yarn build:client-pkg && yarn build:server && yarn build:client && yarn build:db && yarn install",
+        "build": "yarn build:model && yarn build:server-pkg && yarn build:client-pkg && yarn build:db && yarn install",
         "build:model": "yarn workspace model build",
         "build:server-pkg": "yarn workspace @fizzbuzz-service/server build",
         "build:client-pkg": "yarn workspace @fizzbuzz-service/client build",
-        "build:server": "yarn workspace server build",
-        "build:client": "yarn workspace client build",
         "build:db": "cd ./packages/database && yarn build",
         "run:server": "yarn workspace server start",
         "run:client": "yarn workspace client start",
