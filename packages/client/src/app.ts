@@ -13,11 +13,13 @@ import {
     PingCommand,
 } from "@fizzbuzz-service/client"
 import { Command } from "commander"
+import { UserCommands } from "./userCommands"
 
 const endpoint = "http://localhost:8080"
 const region = "fake-region"
 const client = new FizzBuzzClient({ endpoint, region })
 const program = new Command()
+const userCommands = new UserCommands(client)
 
 program
     .name("FizzBuzzClientCli")
@@ -58,80 +60,24 @@ program
     .command("addUser")
     .description("Add a user to the server")
     .option("-n, --name <name>", "Name of the user")
-    .action((options, _) => {
-        console.log(`Attempting to add user ${options.name}`)
-        client
-            .send(
-                new AddUserCommand({
-                    userName: options.name,
-                })
-            )
-            .catch((err: any) => {
-                console.log(err)
-                process.exit(1)
-            })
-            .then((res: AddUserOutput) => {
-                console.log(res.response)
-            })
-    })
+    .action(userCommands.addUser.bind(userCommands))
 
 program
     .command("deleteUser")
     .description("Delete a user from the server")
     .option("-n, --name <name>", "Name of the user")
-    .action((options, _) => {
-        console.log(`Attempting to delete user ${options.name}`)
-        client
-            .send(
-                new DeleteUserCommand({
-                    userName: options.name,
-                })
-            )
-            .catch((err: any) => {
-                console.log(err)
-                process.exit(1)
-            })
-            .then((res: DeleteUserOutput) => {
-                console.log(res.response)
-            })
-    })
+    .action(userCommands.deleteUser.bind(userCommands))
 
 program
     .command("getUser")
     .description("Get a user from the server")
     .option("-n, --name <name>", "Name of the user")
-    .action((options, _) => {
-        console.log(`Attempting to get user ${options.name}`)
-        client
-            .send(
-                new GetUserCommand({
-                    userName: options.name,
-                })
-            )
-            .catch((err: any) => {
-                console.log(err)
-                process.exit(1)
-            })
-            .then((res: GetUserOutput) => {
-                console.log(res.response)
-            })
-    })
+    .action(userCommands.getUser.bind(userCommands))
 
 program
     .command("listUsers")
     .description("listUsers")
-    .action((options, _) => {
-        console.log(`Attempting to list users`)
-        client
-            .send(new ListUsersCommand({}))
-            .catch((err: any) => {
-                console.log(err)
-                process.exit(1)
-            })
-            .then((res: ListUsersOutput) => {
-                console.log(res.response)
-            })
-    })
+    .action(userCommands.listUsers.bind(userCommands))
 
 const main = () => {
     program.parse()
